@@ -7,11 +7,11 @@ const news = [
         title: "Breaking News: Major event unfolds in the city",
     },
     {
-        id: "1",
+        id: "2",
         title: "Breaking News: New policy accounce by the government",
     },
     {
-        id: "1",
+        id: "3",
         title: "Breaking News: Sports Team wins championship",
     }
 ]
