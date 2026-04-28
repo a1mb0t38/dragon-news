@@ -1,10 +1,8 @@
 import LeftSideBar from '@/components/homepage/news/LeftSideBar';
+import NewsCard from '@/components/homepage/news/NewsCard';
 import RightSideBar from '@/components/homepage/news/RightSideBar';
 import { getCategories, getNewsByCategoryId } from '@/lib/data';
 import React from 'react';
-
-
-
 
 // to get the id of the page we use server components "params"
 const NewsCategoryPage = async ({ params }) => {
@@ -25,16 +23,14 @@ const NewsCategoryPage = async ({ params }) => {
             </div>
 
             {/* All news section */}
-            <div className="font-bold col-span-6">
+            <div className="col-span-6">
                 <h1 className=''>News By Category</h1>
                 <div className="space-y-4 mt-6">
 
                     {
                         news.length > 0 ? news.map(n => {
-                            return <div className="p-6 rounded-md border" key={n._id}>
-                                {n.title}
-
-                            </div>
+                            return <NewsCard className="p-6 rounded-md border" key={n._id} news={n}>
+                            </NewsCard>
                         }) : <h2 className='text-center text-4xl'>No News Found</h2>
                     }
                 </div>
