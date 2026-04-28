@@ -4,6 +4,11 @@ import RightSideBar from '@/components/homepage/news/RightSideBar';
 import { getCategories, getNewsByCategoryId } from '@/lib/data';
 import React from 'react';
 
+export const metadata = {
+  title: "Dragon News | home",
+  description: "Best news portal In Bangladesh",
+};
+
 // to get the id of the page we use server components "params"
 const NewsCategoryPage = async ({ params }) => {
     const { id } = await params;
