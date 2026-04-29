@@ -2,8 +2,9 @@
 
 import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { toast, ToastContainer } from 'react-toastify';
 
 const LoginPage = () => {
@@ -14,13 +15,10 @@ const LoginPage = () => {
         formState: {errors},
     } = useForm();
 
+    const [isShowPassword, setisShowPassword] = useState(false)
+
     const handleLoginFunc = async(data) => {
-        // e.preventDefault();
-        // const email = e.target.email.value;
-        // console.log(email)
-        // const password = e.target.password.value;
-        // console.log(password)
-        // console.log(data, "data")
+        
         const {data: res, error} = await authClient.signIn.email({
             name: data.name, // required
             email: data.email, // required
@@ -46,9 +44,10 @@ const LoginPage = () => {
                         <input type="email" className="input" name="email" placeholder="Enter Your Email Address" {...register("email",{ required: "Email is required" })} />
                          {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
                     </fieldset>
-                    <fieldset className="fieldset">
+                    <fieldset className="fieldset relative">
                         <legend className="fieldset-legend">Password</legend>
-                        <input type="password" className="input" name="password" placeholder="Enter Your Password" {...register("password",{ required: "Must put your password" })} />
+                        <input type={isShowPassword ? "text" : "password"} className="input" name="password" placeholder="Enter Your Password" {...register("password",{ required: "Must put your password" })} />
+                        <span className='absolute right-1 top-4 mr-2 cursor-pointer' onClick={()=>setisShowPassword(!isShowPassword)}>{isShowPassword ? <FaEye></FaEye> : <FaEyeSlash></FaEyeSlash>}</span>
                         {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                     </fieldset>
                     <div>
