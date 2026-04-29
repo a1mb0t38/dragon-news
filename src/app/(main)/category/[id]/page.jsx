@@ -4,6 +4,7 @@ import RightSideBar from '@/components/homepage/news/RightSideBar';
 import { getCategories, getNewsByCategoryId } from '@/lib/data';
 import React from 'react';
 
+
 export const metadata = {
   title: "Dragon News | home",
   description: "Best news portal In Bangladesh",
@@ -46,7 +47,7 @@ const NewsCategoryPage = async ({ params }) => {
                 <h1>social links</h1>
                 <RightSideBar></RightSideBar>
             </div>
-
+                {/* <ToastContainer></ToastContainer> */}
 
         </div>
     );

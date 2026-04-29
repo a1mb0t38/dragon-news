@@ -23,6 +23,7 @@ export default function RootLayout({ children }) {
       <body className={`${poppins.className} min-h-full flex flex-col`}>
         
         {children}
+        
         </body>
     </html>
   );

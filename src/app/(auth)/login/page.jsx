@@ -1,8 +1,10 @@
 "use client";
 
+import { authClient } from '@/lib/auth-client';
 import Link from 'next/link';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { toast, ToastContainer } from 'react-toastify';
 
 const LoginPage = () => {
 
@@ -12,13 +14,25 @@ const LoginPage = () => {
         formState: {errors},
     } = useForm();
 
-    const handleLoginFunc = (data) => {
+    const handleLoginFunc = async(data) => {
         // e.preventDefault();
         // const email = e.target.email.value;
         // console.log(email)
         // const password = e.target.password.value;
         // console.log(password)
-        console.log(data, "data")
+        // console.log(data, "data")
+        const {data: res, error} = await authClient.signIn.email({
+            name: data.name, // required
+            email: data.email, // required
+            password: data.password, // required
+            callbackURL: "/",
+        })
+        if(error){
+            toast.error(error.message);
+        }
+        if(res){
+            alert("Wellcome to our news site")
+        }
     }
     // console.log(errors, "errors")
 
@@ -37,8 +51,11 @@ const LoginPage = () => {
                         <input type="password" className="input" name="password" placeholder="Enter Your Password" {...register("password",{ required: "Must put your password" })} />
                         {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                     </fieldset>
-                    <button className="btn w-full text-white bg-slate-800">Login</button>
+                    <div>
+                        <button className="btn w-full text-white bg-slate-800">Login</button>
+                    </div>
                 </form>
+                <ToastContainer></ToastContainer>
                 <p className='mt-4'>Don't have an account <Link className='text-red-500' href={'/register'}>Register</Link></p>
             </div>
         </div>
