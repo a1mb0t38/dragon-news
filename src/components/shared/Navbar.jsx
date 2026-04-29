@@ -11,8 +11,6 @@ const Navbar = () => {
 
     const { data: session, isPending } = authClient.useSession()
     const user = session?.user;
-    console.log(user, "this is user")
-    console.log(session, "sessions")
 
     return (
         <div className='container mx-auto flex justify-between items-center mt-6'>
