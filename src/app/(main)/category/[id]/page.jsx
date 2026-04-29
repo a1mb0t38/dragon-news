@@ -44,7 +44,7 @@ const NewsCategoryPage = async ({ params }) => {
 
             {/* secial news section */}
             <div className=" col-span-3">
-                <h1>social links</h1>
+                
                 <RightSideBar></RightSideBar>
             </div>
                 {/* <ToastContainer></ToastContainer> */}
