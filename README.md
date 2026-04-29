@@ -14,7 +14,7 @@ pnpm dev
 bun dev
 ```
 
-Open [dragon-news-sand-delta.vercel.app](dragon-news-sand-delta.vercel.app) with your browser to see the result.
+Open [https://dragon-news-sand-delta.vercel.app/](https://dragon-news-sand-delta.vercel.app/) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
